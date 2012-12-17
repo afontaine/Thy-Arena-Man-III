@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+#include "Item.h"
+
 #define ROUGUE 1
 #define SOLDIER 2
 #define BERZERKER 3

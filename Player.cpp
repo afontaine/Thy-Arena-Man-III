@@ -1,12 +1,11 @@
 #include <iostream>
 #include <string>
+#include "Item.h"
 #include "Player.h"
 
 using namespace std;
 
 Player::Player(string name) {
-
-	this->Armour = new Equipment();
 
 	this->SetName(name);
 	
