@@ -248,3 +248,32 @@ void Player::ChooseWeapon() {
 
 	return;
 }
+
+void Player::ChooseItems() {
+	int random;
+
+	cout << "It's SUPER AWESOME ITEM TIME!" << endl;
+	cout << "1) Choose your own awesome items" << endl;
+	cout << "2) Let the computer coose for you" << endl;
+
+	cin >> random;
+
+	if(random == 2) {
+		this->RandomItems();
+		return;
+	}
+
+	char item;
+
+	for(int i = 3; i > 0; i--) {
+		cout << "You have " << i << " items left to choose." << endl << endl;
+		cout << "(S)teroids: MEGA AWESOME for one turn" << endl;
+		cout << "(P)orn Magazine: Drop on the ground to distract your enemies with scantally clad women" << endl;
+		cout << "(B)ow with 5 arrows" << endl;
+		cout << "(T)eleporter" << endl;
+		cout << "(M)edkit: Completely heals you" << endl;
+		cout << "(D)ead carcasses: Lug them around for maximum intimidation" << endl << endl;
+		cout << "Choose: ";
+		cin >> item;
+		Equip.push_back(new Item(item));
+	}
