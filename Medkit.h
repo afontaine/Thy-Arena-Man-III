@@ -5,6 +5,8 @@
 #include "Item.h"
 
 class Medkit : Item {
-private:
+public:
+	Medkit();
+	~Medkit();
 
-	
+	void Use(player *player);
