@@ -1,8 +1,3 @@
-<<<<<<< Equipment
-=======
-<<<<<<< Player
-=======
->>>>>>> local
 #ifndef ITEM_H
 #define ITEM_H
 
@@ -10,11 +5,8 @@
 
 
 class Item {
-<<<<<<< Equipment
-private:
-=======
+
 protected:
->>>>>>> local
 	string Name;
 	int Effect;
 
@@ -27,9 +19,9 @@ public:
 
 	int GetEffect();
 	void SetEffect(int effect);
-<<<<<<< Equipment
+
+	abstract void Use(Player *player);
 }
-=======
-}
->>>>>>> local
->>>>>>> local
+
+
+#endif
