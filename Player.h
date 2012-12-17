@@ -46,6 +46,21 @@ public:
 
 	bool GetAi();
 	void SetAi(bool ai);
+
+	Equipment GetArmour();
+	void SetArmour(Equipment armour);
+
+	Equipment GetWeapon();
+	void SetWeapon(Equipment weapon);
+
+
+	void Randomize();
+	void ChooseClass();
+	void ChooseAi();
+	void ChooseArmour();
+	void ChooseWeapon();
+	void ChooseItems();
+	void RandomItems();
 }
 
 #endif
