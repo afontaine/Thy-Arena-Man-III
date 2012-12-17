@@ -271,7 +271,7 @@ void Player::ChooseItems() {
 		cout << "(P)orn Magazine: Drop on the ground to distract your enemies with scantally clad women" << endl;
 		cout << "(B)ow with 5 arrows" << endl;
 		cout << "(T)eleporter" << endl;
-		cout << "(M)edkit: Completely heals you" << endl;
+		cout << "(M)edkit: Adds 5 to your current health" << endl;
 		cout << "(D)ead carcasses: Lug them around for maximum intimidation" << endl << endl;
 		cout << "Choose: ";
 		cin >> item;
