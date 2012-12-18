@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "Item.h"
 #include "Player.h"
 
 using namespace std;
@@ -23,7 +24,7 @@ Player::Player(string name) {
 Player::~Player() {
 	delete this->Weapon;
 	delete this->Armour;
-	std::vector<Item *>::iterator Iterate;
+	vector<Item *>::iterator Iterate;
 	for(Iterate = Equip.begin(); Iterate != Equip.end(); Iterate++)
 		delete *Iterate;
 }

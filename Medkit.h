@@ -3,10 +3,14 @@
 
 #include <string>
 #include "Item.h"
+#include "Player.h"
 
 class Medkit : Item {
 public:
 	Medkit();
 	~Medkit();
 
-	void Use(player *player);
+	void Use(Player *player);
+}
+
+#endif
