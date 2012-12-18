@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Item::Item(string name, int effect) {
+Item::Item(string name) {
 	this->Name = name;
 }
 

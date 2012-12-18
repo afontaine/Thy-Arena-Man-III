@@ -2,6 +2,7 @@
 #define ITEM_H
 
 #include <string>
+#include "Player.h"
 
 
 class Item {
@@ -17,7 +18,7 @@ public:
 	void SetName(string name);
 
 	virtual void Use(Player *player) = 0;
-}
+};
 
 
 #endif
