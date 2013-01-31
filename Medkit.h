@@ -11,6 +11,6 @@ public:
 	~Medkit();
 
 	void Use(Player *player);
-}
+};
 
 #endif

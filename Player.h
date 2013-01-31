@@ -4,13 +4,15 @@
 #include <string>
 #include <vector>
 
+#include "Item.h"
+
 #define ROUGUE 1
 #define SOLDIER 2
 #define BERZERKER 3
 
 #define AI true
 
-
+using namespace std;
 
 class Player {
 private:
@@ -21,8 +23,8 @@ private:
 	int Class;		// Player's class. Either Rougue, Soldier, or Berzerker
 	bool Ai;		// AI flag, default is false
 
-	Equipment *Armour;	// Armour of player
-	Equipment *Weapon;	// Weapon of player
+/*	Equipment *Armour;	// Armour of player
+	Equipment *Weapon;	// Weapon of player */
 	vector<Item *> Equip;		// Vector(s are cool) of items the player is holding
 
 public:
@@ -47,11 +49,11 @@ public:
 	bool GetAi();
 	void SetAi(bool ai);
 
-	Equipment GetArmour();
+/*	Equipment GetArmour();
 	void SetArmour(Equipment armour);
 
 	Equipment GetWeapon();
-	void SetWeapon(Equipment weapon);
+	void SetWeapon(Equipment weapon); */
 
 
 	void Randomize();
@@ -61,6 +63,6 @@ public:
 	void ChooseWeapon();
 	void ChooseItems();
 	void RandomItems();
-}
+};
 
 #endif
