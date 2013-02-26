@@ -29,3 +29,41 @@ Player *Game::GetPlayer(int i) {
 }
 
 Player *Game::GetPlayer(string name) {
+	for(int i = 0; i < this->players.size(); i++)
+		if(players[i]->GetName() == name) {
+			return players[i];
+		}
+}
+
+void Game::SetPlayer(int i, Player *p) {
+	vector<Player *>::iterator it;
+	it = this->players.begin(); advance(it, i);
+	insert_iterator<vector<Player *>> insert_it(this->players, it);
+	this->players.insert(it, p);
+}
+
+void Game::addPlayer(Player *p) {
+	this->players.push_back(p);
+	return;
+}
+
+Player *Game::deletePlayer(int i) {
+	vector<Player *>::iterator it = this->players.begin();
+	advance(it, i);
+	Player *play;
+	*play = *(this->players[i]);
+	this->players.erase(it);
+	return play;
+}
+
+Player *Game::deletePlayer(string name) {
+	for(vector<Player *>::iterator it = this->players.begin(); it!=this->players.end(); it++) {
+		if(it[0]->GetName() == name) {
+			Player *play;
+			*play = *(it[0]);
+			this->players.erase(it);
+			return play;
+		}
+	}
+	return NULL;
+}

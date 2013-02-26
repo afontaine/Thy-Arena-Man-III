@@ -27,7 +27,8 @@ public:
 	Player *GetPlayer(string name);
 	void SetPlayer(int i, Player *p);	
 	void addPlayer(Player * p);
-	Player * deletePlayer();
+	Player *deletePlayer(int i);
+	Player *deletePlayer(string name);
 
 };
 #endif
