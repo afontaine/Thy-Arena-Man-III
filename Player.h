@@ -14,6 +14,20 @@
 
 using namespace std;
 
+//Carteasean coordinates (bottom right is (0,0))
+class Point {
+private:
+	int X, Y;
+public:
+	Point(int x, int y) {this->X = x; this->Y = y;}
+	Point() {this->X = 0; this->Y = 0;}
+	int GetX() {return X;}
+	int GetY() {return Y;}
+	void SetX(int x) {this->X = x;}
+	void SetY(int y) {this->Y = y;}
+
+};
+
 class Player {
 private:
 	string Name;	// Name of character
@@ -22,6 +36,7 @@ private:
 	int Strength;	// Strength of player
 	int Class;		// Player's class. Either Rougue, Soldier, or Berzerker
 	bool Ai;		// AI flag, default is false
+	Point *Location;
 
 /*	Equipment *Armour;	// Armour of player
 	Equipment *Weapon;	// Weapon of player */
@@ -55,6 +70,10 @@ public:
 	Equipment GetWeapon();
 	void SetWeapon(Equipment weapon); */
 
+	Point *GetLocation();
+	void SetLocation(Point *location);
+	void SetLocation(int x, int y);
+
 
 	void Randomize();
 	void ChooseClass();
@@ -63,6 +82,11 @@ public:
 	void ChooseWeapon();
 	void ChooseItems();
 	void RandomItems();
+
+	void MoveLeft();
+	void MoveRight();
+	void MoveUp();
+	void MoveDown();
 };
 
 #endif

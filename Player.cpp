@@ -136,6 +136,21 @@ void Player::SetWeapon(Equipment weapon) {
 	return;
 }
 
+Point *Player::GetLocation() {
+	return this->Location;
+}
+
+void Player::SetLocation(Point *location) {
+	this->Location->~Point();
+	this->Location = location;
+}
+
+void Player::SetLocation(int x, int y) {
+	this->Location->~Point();
+	this->Location = new Point(x,y);
+	return;
+}
+
 void Player::Randomize(){}
 
 void Player::ChooseClass() {
@@ -275,4 +290,25 @@ void Player::ChooseItems() {
 		cout << "Choose: ";
 		cin >> item;
 		Equip.push_back(new Item(item));
+	}
+}
+
+	void Player::MoveDown() {
+		this->Location->SetY(this->Location->GetY()-1);
+		return;
+	}
+
+	void Player::MoveUp() {
+		this->Location->SetY(this->Location->GetY()+1);
+		return;
+	}
+
+	void Player::MoveLeft() {
+		this->Location->SetX(this->Location->GetX()-1);
+		return;
+	}
+
+	void Player::MoveRight() {
+		this->Location->SetX(this->Location->GetX()+1);
+		return;
 	}
