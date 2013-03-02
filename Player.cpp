@@ -20,8 +20,8 @@ Player::Player(string name) {
 }
 
 Player::~Player() {
-	delete this->Weapon;
-	delete this->Armour;
+	delete this->Attacker;
+	delete this->Defender;
 	vector<Item *>::iterator Iterate;
 	for(Iterate = Equip.begin(); Iterate != Equip.end(); Iterate++)
 		delete *Iterate;
@@ -117,21 +117,21 @@ void Player::SetAi(bool ai) {
 	return;
 }
 
-Equipment Player::GetArmour() {
+Armour *Player::GetDefender() {
 	return this->Armour;
 }
 
-void Player::SetArmour(Equipment armour) {
+void Player::SetDefender(Armour *armour) {
 	delete this->Armour;
 	this->Armour = armour;
 	return;
 }
 
-Equipment Player::GetWeapon() {
+Weapon Player::GetAttacker() {
 	return this->Weapon;
 }
 
-void Player::SetWeapon(Equipment weapon) {
+void Player::SetAttacker(Weapon *weapon) {
 	this->Weapon = weapon;
 	return;
 }
@@ -207,7 +207,7 @@ void Player::ChooseArmour() {
 	cout << "Choose: ";
 	cin >> armour;
 
-	Equipment *newArmour;
+	Armour *newArmour;
 
 	switch(armour) {
 	case 'L':
@@ -224,7 +224,7 @@ void Player::ChooseArmour() {
 		break
 	}
 
-	this->SetArmour(newArmour);
+	this->SetDefender(newArmour);
 
 	return;
 }
@@ -244,21 +244,21 @@ void Player::ChooseWeapon() {
 	cout << "Choose your tool of death! ";
 	cin >> weapons;
 
-	Equipment *weapon;
+	Weapon *weapon;
 
 	switch(weapons) {
 	case 'R':
-		weapon = new Weapon("Rapier");
+		weapon = new Weapon("Rapier", 6, 2);
 		break;
 	case 'B':
-		weapon = new Weapon("Broadsword");
+		weapon = new Weapon("Broadsword", 5, 4);
 		break;
 	case 'A':
-		weapon = new Weapon("BattleAxe");
+		weapon = new Weapon("BattleAxe", 4, 6);
 		break;
 	}
 
-	this->SetWeapon(weapon);
+	this->SetAttacker(weapon);
 
 	return;
 }
@@ -311,4 +311,14 @@ void Player::ChooseItems() {
 	void Player::MoveRight() {
 		this->Location->SetX(this->Location->GetX()+1);
 		return;
+	}
+
+	void Player::Dead() {
+		cout << this->GetName() << " has run out of health and died a cowardly death. Begone to the underworld, vile one!" << endl;
+	}
+
+	bool Player::isAlive() {
+		if(this->GetHealth() > 0)
+			return true;
+		return false;
 	}

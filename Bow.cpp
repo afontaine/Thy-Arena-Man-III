@@ -47,7 +47,7 @@ void Bow::Use(Player *player) {
 
 	if(attack == 20 && defend == 1) { // attack: critical success; defend: critical failure
 		cout << poorSucker->GetName() << " got hit right in the eye socket! HEADSHOT!" << endl;
-		poorSucker->Dead(); //TODO implement Dead
+		poorSucker->Dead();
 	}
 	else if(attack == 1 && defend == 20) { // attack: critical failure; defend: critical success
 		cout << poorSucker->GetName << " caught the arrow mid-flight! " << endl;
@@ -62,6 +62,8 @@ void Bow::Use(Player *player) {
 	else if(attack == 1) { // attack: critical failure; defend: critical success
 		cout << player->GetName << "'s feeble attempt to fire a bow backfires and hits them in the foot!" << endl;
 		player->SetHealth(player->GetHealth() - 3);
+		if(!player->isAlive())
+			player->Dead();
 	}
 	else if(attack < defend) // attack rolls worse than defense
 		cout << poorSucker->GetName << " dodged the arrow! What a coward!" << endl;
@@ -71,6 +73,9 @@ void Bow::Use(Player *player) {
 		else
 			poorSucker->SetHealth(poorSucker->GetHealth() - loss); // standard damage
 	}
+
+	if(!poorSucker->isAlive())
+		poorSucker->Dead();
 
 	this->Arrows--;
 

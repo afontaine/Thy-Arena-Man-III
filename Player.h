@@ -5,6 +5,8 @@
 #include <vector>
 
 #include "Item.h"
+#include "Weapon.h"
+#include "Armour.h"
 
 #define ROUGUE 1
 #define SOLDIER 2
@@ -38,8 +40,8 @@ private:
 	bool Ai;		// AI flag, default is false
 	Point *Location;
 
-/*	Equipment *Armour;	// Armour of player
-	Equipment *Weapon;	// Weapon of player */
+	Armour *Defender;	// Armour of player
+	Weapon *Attacker;	// Weapon of player
 	vector<Item *> Equip;		// Vector(s are cool) of items the player is holding
 
 public:
@@ -64,11 +66,11 @@ public:
 	bool GetAi();
 	void SetAi(bool ai);
 
-/*	Equipment GetArmour();
-	void SetArmour(Equipment armour);
+	Armour GetDefender();
+	void SetDefender(Armour *armour);
 
-	Equipment GetWeapon();
-	void SetWeapon(Equipment weapon); */
+	Weapon GetAttacker();
+	void SetAttacker(Weapon *weapon);
 
 	Point *GetLocation();
 	void SetLocation(Point *location);
@@ -87,6 +89,10 @@ public:
 	void MoveRight();
 	void MoveUp();
 	void MoveDown();
+
+	void Dead();
+
+	bool isAlive();
 };
 
 #endif
