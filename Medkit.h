@@ -2,8 +2,9 @@
 #define MEDKIT_H
 
 #include <string>
-#include "Item.h"
-#include "Player.h"
+
+class Item;
+class Player;
 
 class Medkit : public Item {
 public:

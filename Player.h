@@ -4,17 +4,15 @@
 #include <string>
 #include <vector>
 
-#include "Item.h"
-#include "Weapon.h"
-#include "Armour.h"
-
 #define ROUGUE 1
 #define SOLDIER 2
 #define BERZERKER 3
 
 #define AI true
 
-using namespace std;
+class Weapon;
+class Armour;
+class Item;
 
 //Carteasean coordinates (bottom right is (0,0))
 class Point {
@@ -32,7 +30,7 @@ public:
 
 class Player {
 private:
-	string Name;	// Name of character
+	std::string Name;	// Name of character
 	int Health;		// Health of player
 	int Skill;		// Skill of player
 	int Strength;	// Strength of player
@@ -40,17 +38,18 @@ private:
 	bool Ai;		// AI flag, default is false
 	Point *Location; //location on map, uses carteasean coordinates in the positive (+,+) quadrant
 	bool Alive;		// Check if player is alive
+	bool Roids;		//check if player is SUPER AWESOME
 
 	Armour *Defender;	// Armour of player
 	Weapon *Attacker;	// Weapon of player
-	vector<Item *> Equip;		// Vector(s are cool) of items the player is holding
+	std::vector<Item *> Equip;		// Vector(s are cool) of items the player is holding
 
 public:
-	Player(string name);
+	Player(std::string name);
 	~Player();
 
-	string GetName();
-	void SetName(string name);
+	std::string GetName();
+	void SetName(std::string name);
 
 	int GetHealth();
 	void SetHealth(int health);
@@ -61,21 +60,24 @@ public:
 	int GetStrength();
 	void SetStrength(int strength);
 
-	string GetClass();
+	std::string GetClass();
 	void SetClass(char newClass);
 
 	bool GetAi();
 	void SetAi(bool ai);
 
-	Armour GetDefender();
+	Armour *GetDefender();
 	void SetDefender(Armour *armour);
 
-	Weapon GetAttacker();
+	Weapon *GetAttacker();
 	void SetAttacker(Weapon *weapon);
 
 	Point *GetLocation();
 	void SetLocation(Point *location);
 	void SetLocation(int x, int y);
+
+	bool isAwesome();
+	void SetAwesome(bool awesome);
 
 
 	void Randomize();

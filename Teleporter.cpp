@@ -2,7 +2,10 @@
 #include <string>
 #include <cstdlib>
 
+#include "Item.h"
+#include "Player.h"
 #include "Teleporter.h"
+
 
 using namespace std;
 
@@ -11,7 +14,7 @@ Teleporter::Teleporter() : Item("Teleporter") {}
 void Teleporter::Use(Player *player) {
 	int x,y;
 	
-	cout << "So, " << player->GetName << ". You think you can jump around wherever you please? 'Cause you can. Go for it." << endl;
+	cout << "So, " << player->GetName() << ". You think you can jump around wherever you please? 'Cause you can. Go for it." << endl;
 	cout << "We just need some info." << endl;
 	cout << "What is the X-coordinate you would like to jump to? (0 is the left edge of the arena, 5 is right) ";
 	cin >> x;
@@ -31,5 +34,8 @@ void Teleporter::Use(Player *player) {
 	}
 	else {
 		cout << "TRANSPORTER FAILURE: SELF-DESTRUCT IMMINANTE" << endl;
-		player->SetHealth(player->GetHealth - 3);
+		player->SetHealth(player->GetHealth() - 3);
 	}
+
+	return;
+}

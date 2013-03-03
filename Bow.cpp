@@ -50,23 +50,23 @@ void Bow::Use(Player *player) {
 		poorSucker->Dead();
 	}
 	else if(attack == 1 && defend == 20) { // attack: critical failure; defend: critical success
-		cout << poorSucker->GetName << " caught the arrow mid-flight! " << endl;
+		cout << poorSucker->GetName() << " caught the arrow mid-flight! " << endl;
 		cout << "What's this? " << poorSucker->GetName() << " charged at " << player->GetName() << "!" << endl;
 		cout << poorSucker->GetName() << " sunk the arrow right through " << player->GetName() << "'s mouth!" << endl;
 		player->Dead(); // Seriously, we need to kill people
 	}
 	else if(defend == 20) // attack: unimportant; defend: critical success
-		cout << poorSucker->GetName << " grabbed the arrow mid-flight and snapped it in half!" << endl;
+		cout << poorSucker->GetName() << " grabbed the arrow mid-flight and snapped it in half!" << endl;
 	else if(loss < 0) // Check to see if there's acutal health loss
 		cout << "The arrow glanced off of " << poorSucker->GetName() << "'s mighty chest." << endl;
 	else if(attack == 1) { // attack: critical failure; defend: critical success
-		cout << player->GetName << "'s feeble attempt to fire a bow backfires and hits them in the foot!" << endl;
+		cout << player->GetName() << "'s feeble attempt to fire a bow backfires and hits them in the foot!" << endl;
 		player->SetHealth(player->GetHealth() - 3);
 		if(!player->isAlive())
 			player->Dead();
 	}
 	else if(attack < defend) // attack rolls worse than defense
-		cout << poorSucker->GetName << " dodged the arrow! What a coward!" << endl;
+		cout << poorSucker->GetName() << " dodged the arrow! What a coward!" << endl;
 	else {
 		if (attack == 20) // attack: critical success; defense: unimportant
 			poorSucker->SetHealth(poorSucker->GetHealth() - loss*2); // double damage

@@ -2,8 +2,10 @@
 #define PORNMAG_H_
 
 #include <string>
-#include "Item.h"
-#include "Player.h"
+
+class Item;
+class Player;
+class Point;
 
 class PornMag : public Item {
 private:
@@ -22,7 +24,7 @@ public:
 
 	void Use(Player *player);
 
-}
+};
 
 
 #endif

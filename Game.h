@@ -4,15 +4,13 @@
 #include <string>
 #include <vector>
 
-#include "Player.h"
-
-using namespace std;
+class Player;
 
 class Game {
 private:
 	int width;
 	int height;
-	vector<Player *> players;
+	std::vector<Player *> players;
 
 public:
 	Game();
@@ -24,11 +22,11 @@ public:
 	int GetHeight();
 
 	Player *GetPlayer(int i);
-	Player *GetPlayer(string name);
+	Player *GetPlayer(std::string name);
 	void SetPlayer(int i, Player *p);	
 	void addPlayer(Player * p);
 	Player *deletePlayer(int i);
-	Player *deletePlayer(string name);
+	Player *deletePlayer(std::string name);
 
 };
 #endif

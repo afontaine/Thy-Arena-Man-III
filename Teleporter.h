@@ -1,8 +1,9 @@
 #ifndef TELEPORTER_H_
 #define TELEPORTER_H_
 
-#include "Item.h"
 
+class Item;
+class Player;
 
 class Teleporter : public Item {
 public:
@@ -10,6 +11,6 @@ public:
 	~Teleporter();
 
 	void Use(Player *player);
-}
+};
 
 #endif

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <iterator>
 
 #include "Player.h"
 #include "Game.h"
@@ -29,9 +30,9 @@ Player *Game::GetPlayer(int i) {
 }
 
 Player *Game::GetPlayer(string name) {
-	for(int i = 0; i < this->players.size(); i++)
-		if(players[i]->GetName() == name) {
-			return players[i];
+	for(vector<Player *>::iterator it = this->players.begin(); it != this->players.end(); ++it)
+		if((*it)->GetName() == name) {
+			return *it;
 		}
 }
 

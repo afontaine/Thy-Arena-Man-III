@@ -9,7 +9,7 @@ using namespace std;
 
 PornMag::PornMag() : Item("PornMag") {
 	this->Location = NULL;
-	this->dropped = false;
+	this->Dropped = false;
 }
 
 PornMag::~PornMag() {
@@ -39,8 +39,8 @@ bool PornMag::isDropped() {
 }
 
 void PornMag::Use(Player *player) {
-	this->SetLocation(player->GetLocation);
+	this->SetLocation(player->GetLocation());
 	this->Dropped = true;
-	cout << player->GetName << " dropped a porn magazine at (" << player->GetLocation()->GetX() <<", "<< player->GetLocation()->GetY() << "). Watch out!" << endl;
+	cout << player->GetName() << " dropped a porn magazine at (" << player->GetLocation()->GetX() <<", "<< player->GetLocation()->GetY() << "). Watch out!" << endl;
 }
 

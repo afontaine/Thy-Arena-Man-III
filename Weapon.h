@@ -3,19 +3,17 @@
 
 #include <string>
 
-using namespace std;
-
 class Weapon {
 private:
-	string Name;
+	std::string Name;
 	int Speed;
 	int Strength;
 
 public:
-	Weapon(string name, int speed, int strength);
+	Weapon(std::string name, int speed, int strength);
 
-	string GetName();
-	void SetName(string name);
+	std::string GetName();
+	void SetName(std::string name);
 
 	int GetSpeed();
 	void SetSpeed(int speed);

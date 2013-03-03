@@ -2,8 +2,9 @@
 #define BOW_H
 
 #include <string>
-#include "Player.h"
-#include "Item.h"
+
+class Item;
+class Player;
 
 class Bow : public Item {
 private:
@@ -17,5 +18,5 @@ public:
 	int GetArrows();
 
 	void Use(Player *player);
-}
+};
 #endif

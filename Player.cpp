@@ -1,10 +1,14 @@
 #include <iostream>
 #include <string>
-#include "Medkit.h"
-#include "Bow.h"
-#include "Teleporter.h"
-#include "Item.h"
+
 #include "Player.h"
+#include "Item.h"
+#include "Weapon.h"
+#include "Armour.h"
+#include "PornMag.h"
+#include "Bow.h"
+#include "Medkit.h"
+#include "Teleporter.h"
 
 using namespace std;
 
@@ -121,21 +125,21 @@ void Player::SetAi(bool ai) {
 }
 
 Armour *Player::GetDefender() {
-	return this->Armour;
+	return this->Defender;
 }
 
 void Player::SetDefender(Armour *armour) {
-	delete this->Armour;
-	this->Armour = armour;
+	delete this->Defender;
+	this->Defender = armour;
 	return;
 }
 
-Weapon Player::GetAttacker() {
-	return this->Weapon;
+Weapon *Player::GetAttacker() {
+	return this->Attacker;
 }
 
 void Player::SetAttacker(Weapon *weapon) {
-	this->Weapon = weapon;
+	this->Attacker = weapon;
 	return;
 }
 
@@ -145,7 +149,7 @@ Point *Player::GetLocation() {
 
 void Player::SetLocation(Point *location) {
 	this->Location->~Point();
-	this->Location = location;
+	this->Location = new Point(location->GetX(), location->GetY());
 }
 
 void Player::SetLocation(int x, int y) {

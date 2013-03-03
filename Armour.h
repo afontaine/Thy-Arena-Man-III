@@ -1,19 +1,20 @@
 #ifndef	ARMOUR_H_
 #define ARMOUR_H_
 
-#import <string>
+#include <string>
+
 
 class Armour {
 private:
-	string Name;
+	std::string Name;
 	int Protection;
 	int Modifier;
 
 public:
-	Armour(string name, int protection, int modifier);
+	Armour(std::string name, int protection, int modifier);
 
-	string GetName();
-	void SetName(string name);
+	std::string GetName();
+	void SetName(std::string name);
 
 	int GetProtection();
 	void SetProtection(int protection);
