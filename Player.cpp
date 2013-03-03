@@ -224,7 +224,7 @@ void Player::ChooseArmour() {
 		break;
 	case 'N':
 		newArmour = new Armour("Naked", 0, 2);
-		break
+		break;
 	}
 
 	this->SetDefender(newArmour);
