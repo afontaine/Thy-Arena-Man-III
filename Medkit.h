@@ -5,7 +5,7 @@
 #include "Item.h"
 #include "Player.h"
 
-class Medkit : Item {
+class Medkit : public Item {
 public:
 	Medkit();
 	~Medkit();

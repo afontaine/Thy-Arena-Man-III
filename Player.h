@@ -38,7 +38,8 @@ private:
 	int Strength;	// Strength of player
 	int Class;		// Player's class. Either Rougue, Soldier, or Berzerker
 	bool Ai;		// AI flag, default is false
-	Point *Location;
+	Point *Location; //location on map, uses carteasean coordinates in the positive (+,+) quadrant
+	bool Alive;		// Check if player is alive
 
 	Armour *Defender;	// Armour of player
 	Weapon *Attacker;	// Weapon of player

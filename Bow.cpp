@@ -74,9 +74,6 @@ void Bow::Use(Player *player) {
 			poorSucker->SetHealth(poorSucker->GetHealth() - loss); // standard damage
 	}
 
-	if(!poorSucker->isAlive())
-		poorSucker->Dead();
-
 	this->Arrows--;
 
 	return;

@@ -1,5 +1,8 @@
 #include <iostream>
 #include <string>
+#include "Medkit.h"
+#include "Bow.h"
+#include "Teleporter.h"
 #include "Item.h"
 #include "Player.h"
 
@@ -211,16 +214,16 @@ void Player::ChooseArmour() {
 
 	switch(armour) {
 	case 'L':
-		newArmour = new Armour("Leather");
+		newArmour = new Armour("Leather", 1, 0);
 		break;
 	case 'C':
-		newArmour = new Armour("Chainmail");
+		newArmour = new Armour("Chainmail", 3, -1);
 		break;
 	case 'P':
-		newArmour = new Armour("Platemail");
+		newArmour = new Armour("Platemail", 5, -2);
 		break;
 	case 'N':
-		newArmour = new Armour("Naked");
+		newArmour = new Armour("Naked", 0, 2);
 		break
 	}
 
@@ -289,7 +292,30 @@ void Player::ChooseItems() {
 		cout << "(D)ead carcasses: Lug them around for maximum intimidation" << endl << endl;
 		cout << "Choose: ";
 		cin >> item;
-		Equip.push_back(new Item(item));
+		
+		switch(item) {
+		case 'S':
+			this->Equip.push_back(new Steroids());
+			break;
+		case 'P':
+			this->Equip.push_back(new PornMag());
+			break;
+		case 'B':
+			this->Equip.push_back(new Bow());
+			break;
+		case 'T':
+			this->Equip.push_back(new Teleporter());
+			break;
+		case 'M':
+			this->Equip.push_back(new Medkit());
+			break;
+		case 'D':
+			this->Equip.push_back(new Carcass());
+			break;
+		default:
+			i++;
+			break;
+		}
 	}
 }
 
@@ -314,11 +340,12 @@ void Player::ChooseItems() {
 	}
 
 	void Player::Dead() {
-		cout << this->GetName() << " has run out of health and died a cowardly death. Begone to the underworld, vile one!" << endl;
+		if(Alive) {
+			cout << this->GetName() << " has run out of health and died a cowardly death. Begone to the underworld, vile one!" << endl;
+			Alive = false;
+		}
 	}
 
 	bool Player::isAlive() {
-		if(this->GetHealth() > 0)
-			return true;
-		return false;
+		return Alive;
 	}

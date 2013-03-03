@@ -5,7 +5,7 @@
 #include "Player.h"
 #include "Item.h"
 
-class Bow : Item {
+class Bow : public Item {
 private:
 	int Arrows;
 
