@@ -7,6 +7,7 @@
 #define ROUGUE 1
 #define SOLDIER 2
 #define BERZERKER 3
+#define	DEAD 0
 
 #define AI true
 

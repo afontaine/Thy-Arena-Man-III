@@ -34,6 +34,7 @@ Player *Game::GetPlayer(string name) {
 		if((*it)->GetName() == name) {
 			return *it;
 		}
+	return NULL;
 }
 
 void Game::SetPlayer(int i, Player *p) {
@@ -51,18 +52,20 @@ void Game::addPlayer(Player *p) {
 Player *Game::deletePlayer(int i) {
 	vector<Player *>::iterator it = this->players.begin();
 	advance(it, i);
-	Player *play;
+	Player *play = NULL;
 	*play = *(this->players[i]);
-	this->players.erase(it);
+	if(play != NULL)
+		this->players.erase(it);
 	return play;
 }
 
 Player *Game::deletePlayer(string name) {
 	for(vector<Player *>::iterator it = this->players.begin(); it!=this->players.end(); it++) {
 		if(it[0]->GetName() == name) {
-			Player *play;
+			Player *play = NULL;
 			*play = *(it[0]);
-			this->players.erase(it);
+			if(play != NULL)
+				this->players.erase(it);
 			return play;
 		}
 	}

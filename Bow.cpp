@@ -23,7 +23,7 @@ int Bow::GetArrows() {
 }
 
 void Bow::Use(Player *player) {
-	Player *poorSucker;
+	Player *poorSucker = NULL;
 
 	cout << "Select the player you wish to use this bow on." << endl;
 	//TODO Add Player select
@@ -42,7 +42,7 @@ void Bow::Use(Player *player) {
 
 	attack = rand() % 20 + 1; // Roll d20s
 	defend = rand() % 20 + 1;
-	modify = sqrt((playerX*playerX - poorSuckerX*poorSuckerX) + (playerY*playerY + poorSuckerY*poorSuckerY)); // Cartesean distance
+	modify = (int) (sqrt((playerX*playerX - poorSuckerX*poorSuckerX) + (playerY*playerY + poorSuckerY*poorSuckerY)) + 0.5); // Cartesean distance
 	loss = (player->GetSkill()/modify); // Something I made up. Will probably alter later. Health loss
 
 	if(attack == 20 && defend == 1) { // attack: critical success; defend: critical failure
@@ -53,6 +53,7 @@ void Bow::Use(Player *player) {
 		cout << poorSucker->GetName() << " caught the arrow mid-flight! " << endl;
 		cout << "What's this? " << poorSucker->GetName() << " charged at " << player->GetName() << "!" << endl;
 		cout << poorSucker->GetName() << " sunk the arrow right through " << player->GetName() << "'s mouth!" << endl;
+		poorSucker->SetLocation(player->GetLocation());
 		player->Dead(); // Seriously, we need to kill people
 	}
 	else if(defend == 20) // attack: unimportant; defend: critical success

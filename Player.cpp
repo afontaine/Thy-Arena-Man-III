@@ -9,6 +9,7 @@
 #include "Bow.h"
 #include "Medkit.h"
 #include "Teleporter.h"
+#include "Steroids.h"
 
 using namespace std;
 
