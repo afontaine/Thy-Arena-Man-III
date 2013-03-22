@@ -13,7 +13,7 @@ Steroids::Steroids() : Item("Steroids"){}
 void Steroids::Use(Player *player) {
 	int roll = rand() % 20 + 1;
 
-	if(roll < 1) {
+	if(roll > 1) {
 		cout << player->GetName() << " has used steroids! They are now MEGA AWESOME!!!!!!1!111!!1!1!!!!" << endl;
 		player->SetAwesome(true);
 	}
