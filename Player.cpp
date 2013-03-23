@@ -1,7 +1,15 @@
 #include <iostream>
 #include <string>
-#include "Item.h"
+
 #include "Player.h"
+#include "Item.h"
+#include "Weapon.h"
+#include "Armour.h"
+#include "PornMag.h"
+#include "Bow.h"
+#include "Medkit.h"
+#include "Teleporter.h"
+#include "Steroids.h"
 
 using namespace std;
 
@@ -20,8 +28,8 @@ Player::Player(string name) {
 }
 
 Player::~Player() {
-	delete this->Weapon;
-	delete this->Armour;
+	delete this->Attacker;
+	delete this->Defender;
 	vector<Item *>::iterator Iterate;
 	for(Iterate = Equip.begin(); Iterate != Equip.end(); Iterate++)
 		delete *Iterate;
@@ -117,22 +125,37 @@ void Player::SetAi(bool ai) {
 	return;
 }
 
-Equipment Player::GetArmour() {
-	return this->Armour;
+Armour *Player::GetDefender() {
+	return this->Defender;
 }
 
-void Player::SetArmour(Equipment armour) {
-	delete this->Armour;
-	this->Armour = armour;
+void Player::SetDefender(Armour *armour) {
+	delete this->Defender;
+	this->Defender = armour;
 	return;
 }
 
-Equipment Player::GetWeapon() {
-	return this->Weapon;
+Weapon *Player::GetAttacker() {
+	return this->Attacker;
 }
 
-void Player::SetWeapon(Equipment weapon) {
-	this->Weapon = weapon;
+void Player::SetAttacker(Weapon *weapon) {
+	this->Attacker = weapon;
+	return;
+}
+
+Point *Player::GetLocation() {
+	return this->Location;
+}
+
+void Player::SetLocation(Point *location) {
+	this->Location->~Point();
+	this->Location = new Point(location->GetX(), location->GetY());
+}
+
+void Player::SetLocation(int x, int y) {
+	this->Location->~Point();
+	this->Location = new Point(x,y);
 	return;
 }
 
@@ -192,24 +215,24 @@ void Player::ChooseArmour() {
 	cout << "Choose: ";
 	cin >> armour;
 
-	Equipment *newArmour;
+	Armour *newArmour;
 
 	switch(armour) {
 	case 'L':
-		newArmour = new Armour("Leather");
+		newArmour = new Armour("Leather", 1, 0);
 		break;
 	case 'C':
-		newArmour = new Armour("Chainmail");
+		newArmour = new Armour("Chainmail", 3, -1);
 		break;
 	case 'P':
-		newArmour = new Armour("Platemail");
+		newArmour = new Armour("Platemail", 5, -2);
 		break;
 	case 'N':
-		newArmour = new Armour("Naked");
-		break
+		newArmour = new Armour("Naked", 0, 2);
+		break;
 	}
 
-	this->SetArmour(newArmour);
+	this->SetDefender(newArmour);
 
 	return;
 }
@@ -229,21 +252,21 @@ void Player::ChooseWeapon() {
 	cout << "Choose your tool of death! ";
 	cin >> weapons;
 
-	Equipment *weapon;
+	Weapon *weapon;
 
 	switch(weapons) {
 	case 'R':
-		weapon = new Weapon("Rapier");
+		weapon = new Weapon("Rapier", 6, 2);
 		break;
 	case 'B':
-		weapon = new Weapon("Broadsword");
+		weapon = new Weapon("Broadsword", 5, 4);
 		break;
 	case 'A':
-		weapon = new Weapon("BattleAxe");
+		weapon = new Weapon("BattleAxe", 4, 6);
 		break;
 	}
 
-	this->SetWeapon(weapon);
+	this->SetAttacker(weapon);
 
 	return;
 }
@@ -274,5 +297,60 @@ void Player::ChooseItems() {
 		cout << "(D)ead carcasses: Lug them around for maximum intimidation" << endl << endl;
 		cout << "Choose: ";
 		cin >> item;
-		Equip.push_back(new Item(item));
+		
+		switch(item) {
+		case 'S':
+			this->Equip.push_back(new Steroids());
+			break;
+		case 'P':
+			this->Equip.push_back(new PornMag());
+			break;
+		case 'B':
+			this->Equip.push_back(new Bow());
+			break;
+		case 'T':
+			this->Equip.push_back(new Teleporter());
+			break;
+		case 'M':
+			this->Equip.push_back(new Medkit());
+			break;
+		case 'D':
+			this->Equip.push_back(new Carcass());
+			break;
+		default:
+			i++;
+			break;
+		}
+	}
+}
+
+	void Player::MoveDown() {
+		this->Location->SetY(this->Location->GetY()-1);
+		return;
+	}
+
+	void Player::MoveUp() {
+		this->Location->SetY(this->Location->GetY()+1);
+		return;
+	}
+
+	void Player::MoveLeft() {
+		this->Location->SetX(this->Location->GetX()-1);
+		return;
+	}
+
+	void Player::MoveRight() {
+		this->Location->SetX(this->Location->GetX()+1);
+		return;
+	}
+
+	void Player::Dead() {
+		if(Alive) {
+			cout << this->GetName() << " has run out of health and died a cowardly death. Begone to the underworld, vile one!" << endl;
+			Alive = false;
+		}
+	}
+
+	bool Player::isAlive() {
+		return Alive;
 	}
