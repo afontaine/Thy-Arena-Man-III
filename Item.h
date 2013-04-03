@@ -17,7 +17,7 @@ public:
 	std::string GetName();
 	void SetName(std::string name);
 
-	virtual void Use(Player *player);
+	virtual void Use(Player *player) {}
 };
 
 

@@ -10,6 +10,7 @@
 #include "Medkit.h"
 #include "Teleporter.h"
 #include "Steroids.h"
+#include "Carcass.h"
 
 using namespace std;
 
@@ -353,4 +354,15 @@ void Player::ChooseItems() {
 
 	bool Player::isAlive() {
 		return Alive;
+	}
+
+	void Player::RandomItems() {}; //TODO Implement
+
+	bool Player::isAwesome() {
+		return this->Roids;
+	}
+
+	void Player::SetAwesome(bool awesome) {
+		this->Roids = awesome;
+		return;
 	}

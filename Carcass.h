@@ -1,4 +1,5 @@
-#include <string>
+#ifndef CARCASS_H_
+#define CARCASS_h_
 
 class Player;
 class Item;
@@ -17,3 +18,5 @@ public:
 	void SetEffect(int effect);
 
 };
+
+#endif
