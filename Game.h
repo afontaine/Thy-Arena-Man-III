@@ -28,5 +28,7 @@ public:
 	Player *deletePlayer(int i);
 	Player *deletePlayer(std::string name);
 
+	void printArena();
+
 };
 #endif

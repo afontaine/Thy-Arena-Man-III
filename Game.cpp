@@ -60,9 +60,10 @@ Player *Game::deletePlayer(int i) {
 }
 
 Player *Game::deletePlayer(string name) {
+	Player *play;
 	for(vector<Player *>::iterator it = this->players.begin(); it!=this->players.end(); it++) {
 		if(it[0]->GetName() == name) {
-			Player *play = NULL;
+			play = NULL;
 			*play = *(it[0]);
 			if(play != NULL)
 				this->players.erase(it);
@@ -71,3 +72,6 @@ Player *Game::deletePlayer(string name) {
 	}
 	return NULL;
 }
+
+void Game::printArena() {
+	}
