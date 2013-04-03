@@ -5,14 +5,7 @@ THY ARENA MAN III
 TODO
 	Game time (i.e. the running of the game.)
 	Implement items
-		- Bow (mostly done)
-		- Porn Mag
-		- Dead body
-		- Steriods
-		- Teleporter
+		- Dead body (Not sure yet)
 	Implement AI
 	Armour (done, I think)
 	Weapon (done, I think)
-
-Awesome guide to spliting files that I wish we had during 201:
-	http://www.gamedev.net/page/resources/_/technical/general-programming/organizing-code-files-in-c-and-c-r1798
