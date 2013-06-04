@@ -4,8 +4,5 @@ THY ARENA MAN III
 
 TODO
 	Game time (i.e. the running of the game.)
-	Implement items
-		- Dead body (Not sure yet)
+		- PDCurses/NCurses library.
 	Implement AI
-	Armour (done, I think)
-	Weapon (done, I think)

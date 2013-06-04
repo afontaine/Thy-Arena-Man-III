@@ -1,3 +1,8 @@
+#include <curses.h>
+#undef erase
+#undef move
+#undef clear
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -75,3 +80,7 @@ Player *Game::deletePlayer(string name) {
 
 void Game::printArena() {
 	}
+
+int main() {
+	Player *player1 = new Player("Andrew");
+}

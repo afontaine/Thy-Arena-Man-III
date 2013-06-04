@@ -131,7 +131,7 @@ Armour *Player::GetDefender() {
 }
 
 void Player::SetDefender(Armour *armour) {
-	delete this->Defender;
+//	delete this->Defender;
 	this->Defender = armour;
 	return;
 }
