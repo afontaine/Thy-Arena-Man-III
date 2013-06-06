@@ -82,5 +82,5 @@ void Game::printArena() {
 	}
 
 int main() {
-	Player *player1 = new Player("Andrew");
+	return 0;
 }
