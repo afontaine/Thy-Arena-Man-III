@@ -1,7 +1,3 @@
-#include <curses.h>
-#undef erase
-#undef move
-#undef clear
 
 #include <iostream>
 #include <string>
@@ -10,6 +6,7 @@
 
 #include "Player.h"
 #include "Game.h"
+#include "Gui.h"
 
 using namespace std;
 // TODO: Implement constructor/destructor (start game/finish game)
@@ -82,5 +79,8 @@ void Game::printArena() {
 	}
 
 int main() {
+	Gui *gui = new Gui();
+	gui->drawCompass();
+	getch();
 	return 0;
 }

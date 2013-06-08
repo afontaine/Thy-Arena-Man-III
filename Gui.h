@@ -1,3 +1,6 @@
+#ifndef GUI_H_
+#define GUI_H_
+
 #include <string>
 #include <vector>
 #include <curses.h>
@@ -31,11 +34,12 @@ public:
 // Contained in Gui.cpp, manages entire GUI.
 class Gui {
 private:
-	Window Menu;
-	Window Arena;
-	Window Inventory;
-	Window Status;
-	Window Compass;
+	Window *Menu;
+	Window *Arena;
+	Window *Inventory;
+	Window *Status;
+	Window *Compass;
+	Window *Log;
 
 public:
 	Gui();
@@ -52,4 +56,6 @@ public:
 	void updateInventory(const Player *player);
 
 	void updatePlayerandInventory(const Player *player);
-}
+};
+
+#endif
