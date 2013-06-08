@@ -61,3 +61,26 @@ void Gui::drawCompass() {
 	wrefresh(compass);
 }
 
+void Gui::printMenu(const string message) {
+	WINDOW *menu = this->Menu->getWindow();
+	wrefresh(menu);
+	if(message.length() < 78)
+		mvwprintw(menu, 1, 1, message.c_str());
+	else {
+		int line = 1;
+		unsigned int charac = 0;
+		int length = 78;
+		while(charac < message.length()) {
+			if(charac + length < message.length())
+				while(message.at(charac + length) != ' ' && length >=0) {length--;}
+			if(length == 0)
+				length = 78;
+			mvwprintw(menu, line, 1, message.substr(charac, length).c_str());
+			line++;
+			charac += length + 1;
+			length = 78;
+			wrefresh(menu);
+		}
+	}
+	wrefresh(menu);
+}

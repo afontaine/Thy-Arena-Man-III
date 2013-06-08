@@ -81,6 +81,7 @@ void Game::printArena() {
 int main() {
 	Gui *gui = new Gui();
 	gui->drawCompass();
+	gui->printMenu("This message is well over 79 characters long and should be a decent test of my little function. This message is well over 79 characters long and should be a decent test of my little function. This message is well over 79 characters long and should be a decent test of my little function.");
 	getch();
 	return 0;
 }
