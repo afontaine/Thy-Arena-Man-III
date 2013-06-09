@@ -26,6 +26,8 @@ Player::Player(string name) {
 
 	this->ChooseWeapon();
 
+	this->SetLocation(1, 1);
+
 }
 
 Player::~Player() {

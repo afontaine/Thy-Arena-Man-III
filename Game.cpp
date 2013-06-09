@@ -79,9 +79,16 @@ void Game::printArena() {
 	}
 
 int main() {
+	Player *test = new Player("Test");
+	vector<Player *> players (1, test);
 	Gui *gui = new Gui();
 	gui->drawCompass();
+	gui->updateStatus(test);
+	gui->updateArena(players);
 	gui->printMenu("This message is well over 79 characters long and should be a decent test of my little function. This message is well over 79 characters long and should be a decent test of my little function. This message is well over 79 characters long and should be a decent test of my little function.");
+	getch();
+	test->SetName("Te");
+	gui->updateStatus(test);
 	getch();
 	return 0;
 }

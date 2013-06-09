@@ -1,6 +1,7 @@
 #include <curses.h>
 #include <string>
 #include "Gui.h"
+#include "Player.h"
 
 using namespace std;
 
@@ -83,4 +84,50 @@ void Gui::printMenu(const string message) {
 		}
 	}
 	wrefresh(menu);
+}
+
+void Gui::updateStatus(Player *player) {
+	WINDOW *status = this->Status->getWindow();
+
+	wmove(status, 1, 1);
+	wclrtoeol(status);
+	wprintw(status, player->GetName().c_str());
+	
+	wmove(status, 2, 1);
+	wclrtoeol(status);
+	wprintw(status, "\tLocation:\t%d,%d", player->GetLocation()->GetX(),player->GetLocation()->GetY());
+
+	wmove(status, 3, 1);
+	wclrtoeol(status);
+	wprintw(status, "\tHealth:\t\t %02d", player->GetHealth());
+	
+	wmove(status, 4, 1);
+	wclrtoeol(status);
+	wprintw(status, "\tSkill:\t\t %02d", player->GetSkill());
+
+	wmove(status, 5, 1);
+	wclrtoeol(status);
+	wprintw(status, "\tStrength:\t %02d", player->GetStrength());
+
+	box(status, 0, 0);
+
+	wrefresh(status);
+}
+
+void Gui::updateArena(std::vector<Player *> players) {
+	WINDOW *arena = this->Arena->getWindow();
+
+	for(int i = 1; i < 5; i++) {
+		wmove(arena, i, 1);
+		wclrtoeol(arena);
+	}
+
+	for(vector<Player *>::iterator it = players.begin(); it!= players.end(); it++) {
+		mvwaddch(arena, it[0]->GetLocation()->GetY(), it[0]->GetLocation()->GetX(), it[0]->GetName().c_str()[0]);
+	}
+
+	box(arena, 0, 0);
+
+	wrefresh(arena);
+
 }

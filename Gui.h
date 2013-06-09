@@ -47,15 +47,15 @@ public:
 
 	void printMenu(const std::string message);
 
-	void updateArena(const std::vector<Player *> players);
+	void updateArena(std::vector<Player *> players);
 
-	void updateStatus(const Player *player);
+	void updateStatus(Player *player);
 
 	void drawCompass();
 
-	void updateInventory(const Player *player);
+	void updateInventory(Player *player);
 
-	void updatePlayerandInventory(const Player *player);
+	void updatePlayerandInventory(Player *player);
 };
 
 #endif
