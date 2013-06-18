@@ -79,17 +79,19 @@ void Game::printArena() {
 	}
 
 int main() {
-	Player *test = new Player("Test");
-	vector<Player *> players (1, test);
+	Player *test = new Player("Andrew");
+	Player *test2 = new Player("Jacob");
+	test2->SetLocation(2, 2);
+	vector<Player *> players;
+	players.push_back(test);
+	players.push_back(test2);
 	Gui *gui = new Gui();
 	gui->drawCompass();
 	gui->updateStatus(test);
 	gui->updateArena(players);
-	gui->printMenu("This message is well over 79 characters long and should be a decent test of my little function. This message is well over 79 characters long and should be a decent test of my little function. This message is well over 79 characters long and should be a decent test of my little function. This message is well over 79 characters long and should be a decent test of my little function. This message is well over 79 characters long and should be a decent test of my little function. This message is well over 79 characters long and should be a decent test of my little function.");
-	gui->printLog("Captain's Log. Stardate: 66954.7. We had just made contact with the Klingon Empire. These savage beasts have no sense of civility. They kill at the first chance they get. We have never had to deal with such an enemy before. We have never had to deal with such an enemy before. We have never had to deal with such an enemy before.");
+	gui->printMenu("What do you want to do? Well... what's it going to be, punk?");
+	gui->printLog("Jacob just layed a porn mag! Watch out!");
 	getch();
-	test->SetName("Te");
-	gui->updateStatus(test);
 	getch();
 	return 0;
 }

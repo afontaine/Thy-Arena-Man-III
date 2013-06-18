@@ -106,25 +106,18 @@ void Gui::printMenu(const string message) {
 void Gui::updateStatus(Player *player) {
 	WINDOW *status = this->Status->getWindow();
 
-	wmove(status, 1, 1);
-	wclrtoeol(status);
-	wprintw(status, player->GetName().c_str());
-	
-	wmove(status, 2, 1);
-	wclrtoeol(status);
-	wprintw(status, "\tLocation:\t%d,%d", player->GetLocation()->GetX(),player->GetLocation()->GetY());
+	wclear(status);
 
-	wmove(status, 3, 1);
-	wclrtoeol(status);
-	wprintw(status, "\tHealth:\t\t %02d", player->GetHealth());
 	
-	wmove(status, 4, 1);
-	wclrtoeol(status);
-	wprintw(status, "\tSkill:\t\t %02d", player->GetSkill());
+	mvwprintw(status, 1, 1, player->GetName().c_str());
+	
+	mvwprintw(status, 2, 1, "\tLocation:\t%d,%d", player->GetLocation()->GetX(),player->GetLocation()->GetY());
 
-	wmove(status, 5, 1);
-	wclrtoeol(status);
-	wprintw(status, "\tStrength:\t %02d", player->GetStrength());
+	mvwprintw(status, 3, 1, "\tHealth:\t\t %02d", player->GetHealth());
+	
+	mvwprintw(status, 4, 1, "\tSkill:\t\t %02d", player->GetSkill());
+
+	mvwprintw(status, 5, 1, "\tStrength:\t %02d", player->GetStrength());
 
 	box(status, 0, 0);
 
@@ -134,10 +127,7 @@ void Gui::updateStatus(Player *player) {
 void Gui::updateArena(std::vector<Player *> players) {
 	WINDOW *arena = this->Arena->getWindow();
 
-	for(int i = 1; i < 5; i++) {
-		wmove(arena, i, 1);
-		wclrtoeol(arena);
-	}
+	wclear(arena);
 
 	for(vector<Player *>::iterator it = players.begin(); it!= players.end(); it++) {
 		mvwaddch(arena, it[0]->GetLocation()->GetY(), it[0]->GetLocation()->GetX(), it[0]->GetName().c_str()[0]);
@@ -165,4 +155,22 @@ void Gui::printLog(const string message) {
 		length = 65;
 		wrefresh(log);
 	}
+}
+
+void Gui::updateInventory(Player *player) {
+	WINDOW *inv = this->Inventory->getWindow();
+
+	wclear(inv);
+	box(inv, 0, 0);
+
+	mvwprintw(inv, 1, 1, "Items");
+
+	for(int i = 0; i < player->GetEquip().size(); i++)
+		mvwprintw(inv, i+2, 1, "\t%s", player->GetEquip()[i]);
+
+}
+
+void Gui::updatePlayerandInventory(Player *player) {
+	this->updateStatus(player);
+	this->updateInventory(player);
 }

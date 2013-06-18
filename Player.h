@@ -77,6 +77,8 @@ public:
 	void SetLocation(Point *location);
 	void SetLocation(int x, int y);
 
+	vector<Item *> GetEquip();
+
 	bool isAwesome();
 	void SetAwesome(bool awesome);
 
