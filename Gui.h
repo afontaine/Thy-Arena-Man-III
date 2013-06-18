@@ -56,6 +56,7 @@ public:
 	void updateInventory(Player *player);
 
 	void updatePlayerandInventory(Player *player);
+	void printLog(const std::string message);
 };
 
 #endif

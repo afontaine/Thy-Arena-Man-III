@@ -85,7 +85,8 @@ int main() {
 	gui->drawCompass();
 	gui->updateStatus(test);
 	gui->updateArena(players);
-	gui->printMenu("This message is well over 79 characters long and should be a decent test of my little function. This message is well over 79 characters long and should be a decent test of my little function. This message is well over 79 characters long and should be a decent test of my little function.");
+	gui->printMenu("This message is well over 79 characters long and should be a decent test of my little function. This message is well over 79 characters long and should be a decent test of my little function. This message is well over 79 characters long and should be a decent test of my little function. This message is well over 79 characters long and should be a decent test of my little function. This message is well over 79 characters long and should be a decent test of my little function. This message is well over 79 characters long and should be a decent test of my little function.");
+	gui->printLog("Captain's Log. Stardate: 66954.7. We had just made contact with the Klingon Empire. These savage beasts have no sense of civility. They kill at the first chance they get. We have never had to deal with such an enemy before. We have never had to deal with such an enemy before. We have never had to deal with such an enemy before.");
 	getch();
 	test->SetName("Te");
 	gui->updateStatus(test);

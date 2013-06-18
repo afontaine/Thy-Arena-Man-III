@@ -7,6 +7,7 @@ using namespace std;
 
 Gui::Gui() {
 	initscr();
+	noecho();
 	refresh();
 	resize_term(25, 80);
 	curs_set(0);
@@ -28,6 +29,7 @@ Gui::Gui() {
 
 	box(this->Menu->getWindow(), 0, 0);
 	wmove(this->Menu->getWindow(), 1, 1);
+	scrollok(this->Menu->getWindow(), TRUE);
 	wrefresh(this->Menu->getWindow());
 
 	box(this->Inventory->getWindow(), 0, 0);
@@ -38,6 +40,8 @@ Gui::Gui() {
 
 	box(this->Log->getWindow(), 0, 0);
 	wrefresh(this->Log->getWindow());
+	scrollok(this->Log->getWindow(), TRUE);
+
 	wgetch(this->Menu->getWindow());
 	
 }
@@ -64,6 +68,8 @@ void Gui::drawCompass() {
 
 void Gui::printMenu(const string message) {
 	WINDOW *menu = this->Menu->getWindow();
+	wclear(menu);
+	box(menu, 0, 0);
 	wrefresh(menu);
 	if(message.length() < 78)
 		mvwprintw(menu, 1, 1, message.c_str());
@@ -72,6 +78,17 @@ void Gui::printMenu(const string message) {
 		unsigned int charac = 0;
 		int length = 78;
 		while(charac < message.length()) {
+			if(line >= 10) {
+				mvwprintw(menu, line, 1, "Press any key to continue...");
+				wrefresh(menu);
+				getch();
+				scroll(menu);
+				wmove(menu, 9, 1);
+				wclrtoeol(menu);
+				box(menu, 0, 0);
+				wrefresh(menu);
+				line--;
+			}
 			if(charac + length < message.length())
 				while(message.at(charac + length) != ' ' && length >=0) {length--;}
 			if(length == 0)
@@ -130,4 +147,22 @@ void Gui::updateArena(std::vector<Player *> players) {
 
 	wrefresh(arena);
 
+}
+
+void Gui::printLog(const string message) {
+	WINDOW *log = this->Log->getWindow();
+	unsigned int charac = 0;
+	int length = 65;
+	while(charac < message.length()) {
+		scroll(log);
+		wmove(log, 5, 1);
+		wclrtoeol(log);
+		box(log, 0, 0);
+		if(charac + length < message.length())
+				while(message.at(charac + length) != ' ' && length >=0) {length--;}
+		mvwprintw(log, 5, 1, message.substr(charac, length).c_str());
+		charac += length + 1;
+		length = 65;
+		wrefresh(log);
+	}
 }
