@@ -58,6 +58,8 @@ public:
 	void updatePlayerandInventory(Player *player);
 
 	void printLog(const std::string message);
+
+	char getMenu();
 };
 
 #endif

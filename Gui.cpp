@@ -1,5 +1,6 @@
 #include <curses.h>
 #include <string>
+#include <vector>
 #include "Gui.h"
 #include "Player.h"
 
@@ -7,11 +8,12 @@ using namespace std;
 
 Gui::Gui() {
 	initscr();
-	noecho();
 	refresh();
 	resize_term(25, 80);
-	curs_set(0);
-
+	noecho();
+	cbreak();
+	leaveok(stdscr, TRUE);
+	
 	this->Arena = new Window(7, 13, 0, 0);
 	this->Compass = new Window(7, 13, 7, 0);
 	this->Menu = new Window(11, 80, 14, 0);
@@ -20,29 +22,35 @@ Gui::Gui() {
 	this->Log = new Window(7, 67, 0, 13);
 
 	refresh();
-
+	
+	leaveok(this->Arena->getWindow(), TRUE);
 	box(this->Arena->getWindow(), 0, 0);
 	wrefresh(this->Arena->getWindow());
 
+	leaveok(this->Compass->getWindow(), TRUE);
 	box(this->Compass->getWindow(), 0, 0);
 	wrefresh(this->Compass->getWindow());
 
 	box(this->Menu->getWindow(), 0, 0);
 	wmove(this->Menu->getWindow(), 1, 1);
 	scrollok(this->Menu->getWindow(), TRUE);
+	wechochar(this->Menu->getWindow(), TRUE);
 	wrefresh(this->Menu->getWindow());
 
+	leaveok(this->Inventory->getWindow(), TRUE);
 	box(this->Inventory->getWindow(), 0, 0);
 	wrefresh(this->Inventory->getWindow());
 
+	leaveok(this->Status->getWindow(), TRUE);
 	box(this->Status->getWindow(), 0, 0);
 	wrefresh(this->Status->getWindow());
 
+	leaveok(this->Log->getWindow(), TRUE);
 	box(this->Log->getWindow(), 0, 0);
 	wrefresh(this->Log->getWindow());
 	scrollok(this->Log->getWindow(), TRUE);
 
-	wgetch(this->Menu->getWindow());
+	curs_set(2);
 	
 }
 
@@ -66,7 +74,8 @@ void Gui::drawCompass() {
 	wrefresh(compass);
 }
 
-void Gui::printMenu(const string message) {
+void Gui::printMenu(string message) {
+	message.append(" ");
 	WINDOW *menu = this->Menu->getWindow();
 	wclear(menu);
 	box(menu, 0, 0);
@@ -165,7 +174,7 @@ void Gui::updateInventory(Player *player) {
 
 	mvwprintw(inv, 1, 1, "Items");
 
-	for(int i = 0; i < player->GetEquip().size(); i++)
+	for(unsigned int i = 0; i < player->GetEquip().size(); i++)
 		mvwprintw(inv, i+2, 1, "\t%s", player->GetEquip()[i]);
 
 }
@@ -173,4 +182,15 @@ void Gui::updateInventory(Player *player) {
 void Gui::updatePlayerandInventory(Player *player) {
 	this->updateStatus(player);
 	this->updateInventory(player);
+}
+
+char Gui::getMenu() {
+	echo();
+	nocbreak();
+	WINDOW *menu = this->Menu->getWindow();
+	int input = wgetch(menu);
+	char selection = (char) input;
+	noecho();
+	cbreak();
+	return selection;
 }

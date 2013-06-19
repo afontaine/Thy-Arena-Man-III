@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 
+
 #include "Player.h"
 #include "Item.h"
 #include "Weapon.h"
@@ -11,6 +12,7 @@
 #include "Teleporter.h"
 #include "Steroids.h"
 #include "Carcass.h"
+#include "Gui.h"
 
 using namespace std;
 
@@ -367,4 +369,12 @@ void Player::ChooseItems() {
 	void Player::SetAwesome(bool awesome) {
 		this->Roids = awesome;
 		return;
+	}
+
+	void Player::AddItem(Item *newItem, Gui *gui) {
+		
+	}
+
+	vector<Item *> Player::GetEquip() {
+		return this->Equip;
 	}

@@ -14,6 +14,7 @@
 class Weapon;
 class Armour;
 class Item;
+class Gui;
 
 //Carteasean coordinates (bottom right is (0,0))
 class Point {
@@ -77,7 +78,8 @@ public:
 	void SetLocation(Point *location);
 	void SetLocation(int x, int y);
 
-	vector<Item *> GetEquip();
+	std::vector<Item *> GetEquip();
+	void AddItem(Item *newItem, Gui* gui);
 
 	bool isAwesome();
 	void SetAwesome(bool awesome);

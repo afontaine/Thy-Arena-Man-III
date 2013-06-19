@@ -80,18 +80,18 @@ void Game::printArena() {
 
 int main() {
 	Player *test = new Player("Andrew");
-	Player *test2 = new Player("Jacob");
-	test2->SetLocation(2, 2);
+	//Player *test2 = new Player("Jacob");
+	//test2->SetLocation(2, 2);
 	vector<Player *> players;
 	players.push_back(test);
-	players.push_back(test2);
+	//players.push_back(test2);
 	Gui *gui = new Gui();
 	gui->drawCompass();
 	gui->updateStatus(test);
 	gui->updateArena(players);
-	gui->printMenu("What do you want to do? Well... what's it going to be, punk?");
+	
 	gui->printLog("Jacob just layed a porn mag! Watch out!");
-	getch();
-	getch();
+	gui->printMenu("What do you want to do? Well... what's it going to be, punk?");
+	gui->getMenu();
 	return 0;
 }
