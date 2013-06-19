@@ -2,9 +2,9 @@
 #include <iostream>
 #include <cstdlib>
 
-#include "Item.h"
-#include "Player.h"
-#include "Steroids.h"
+#include "../../Header/Item.h"
+#include "../../Header/Player.h"
+#include "../../Header/Items/Steroids.h"
 
 using namespace std;
 

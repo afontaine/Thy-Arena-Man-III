@@ -1,9 +1,9 @@
 #include <string>
 #include <cstdlib>
 #include <iostream>
-#include "Player.h"
-#include "Item.h"
-#include "Bow.h"
+#include "../../Header/Player.h"
+#include "../../Header/Item.h"
+#include "../../Header/Items/Bow.h"
 
 using namespace std;
 

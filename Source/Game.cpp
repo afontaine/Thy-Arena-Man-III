@@ -4,9 +4,9 @@
 #include <vector>
 #include <iterator>
 
-#include "Player.h"
-#include "Game.h"
-#include "Gui.h"
+#include "..\Header\Player.h"
+#include "..\Header\Game.h"
+#include "..\Header\Gui.h"
 
 using namespace std;
 // TODO: Implement constructor/destructor (start game/finish game)

@@ -1,8 +1,8 @@
 #include <curses.h>
 #include <string>
 #include <vector>
-#include "Gui.h"
-#include "Player.h"
+#include "..\Header\Gui.h"
+#include "..\Header\Player.h"
 
 using namespace std;
 

@@ -1,9 +1,9 @@
 #include <string>
 #include <iostream>
 
-#include "Player.h"
-#include "Item.h"
-#include "PornMag.h"
+#include "../../Header/Player.h"
+#include "../../Header/Item.h"
+#include "../../Header/Items/PornMag.h"
 
 using namespace std;
 
