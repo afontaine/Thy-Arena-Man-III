@@ -3,6 +3,7 @@
 #include <vector>
 #include "..\Header\Gui.h"
 #include "..\Header\Player.h"
+#include "..\Header\Item.h"
 
 using namespace std;
 
@@ -175,8 +176,8 @@ void Gui::updateInventory(Player *player) {
 	mvwprintw(inv, 1, 1, "Items");
 
 	for(unsigned int i = 0; i < player->GetEquip().size(); i++)
-		mvwprintw(inv, i+2, 1, "\t%s", player->GetEquip()[i]);
-
+		mvwprintw(inv, i+2, 1, "\t%s", player->GetEquip().at(i)->GetName().c_str());
+	wrefresh(inv);
 }
 
 void Gui::updatePlayerandInventory(Player *player) {

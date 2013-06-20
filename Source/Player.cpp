@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 
-
 #include "..\Header\Player.h"
 #include "..\Header\Item.h"
 #include "..\Header\Weapon.h"
@@ -16,17 +15,27 @@
 
 using namespace std;
 
+
+extern Gui * gui;
+
 Player::Player(string name) {
 
 	this->SetName(name);
 	
 	this->ChooseAi();
+	
+	if(this->Ai == 1) {
+		this->Randomize();
+		return;
+	}
 
 	this->ChooseClass();
 
 	this->ChooseArmour();
 
 	this->ChooseWeapon();
+	
+	this->ChooseItems();
 
 	this->SetLocation(1, 1);
 
@@ -168,7 +177,7 @@ void Player::Randomize(){}
 
 void Player::ChooseClass() {
 	cout << this->Name << ", CHOOSE YOUR CLASS!" << endl;
-	cout << "(R)ougue class: Attack twice every 5 moves" << endl;
+	cout << "(R)ogue class: Attack twice every 5 moves" << endl;
 	cout << "(S)oldier class: Stay still and attack, receive a stat boost" << endl;
 	cout << "(B)erzerker class: Become MEGA AWESOME every 5 moves" << endl << endl;
 
@@ -178,10 +187,11 @@ void Player::ChooseClass() {
 	cout << "Strength:\t8\t9\t10" << endl;
 	cout << "Health:\t20\t20\t20" << endl << endl;
 
-	cout << "CHOOOSE! ";
-
-	char Class;
-	cin >> Class;
+	char Class = 'G';
+	while(Class != 'R' && Class != 'S' && Class != 'R') {
+		cout << "CHOOOSE! ";
+		cin >> Class;
+	}
 
 	this->SetClass(Class);
 
@@ -189,13 +199,14 @@ void Player::ChooseClass() {
 }
 
 void Player::ChooseAi() {
-	int ai;
+	int ai = 0;
 	cout << "Are you an AI?" << endl;
 	cout << "1) Yes" << endl;
 	cout << "2) No" << endl;
 	
-	cin >> ai;
-	
+	while(ai != 1 && ai != 2) {
+		cin >> ai;
+	}
 	if(ai == 1) {
 		this->SetAi(true);
 		this->Randomize();
@@ -207,7 +218,7 @@ void Player::ChooseAi() {
 void Player::ChooseArmour() {
 	cout << "Armour time, maggot!" << endl;
 	cout << "(L)eather: Sexy" << endl;
-	cout << "(C)hainmail: For those looking for a taste of the Medieval in this honourable arena." << endl;
+	cout << "(C)hainmail: For those looking for a taste of the Medieval in this honourable" << endl << "\tarena." << endl;
 	cout << "(P)latemail: I'M A MANLY MAN, LOOK AT MY PLATEMAIL" << endl;
 	cout << "(N)aked: Extreme intimidation to the extreme!!!!1!!11!1!!!" << endl << endl;
 
@@ -216,9 +227,11 @@ void Player::ChooseArmour() {
 	cout << "Protection:\t1\t3\t5\t0" << endl;
 	cout << "Modifier:\t0\t-1\t-2\t-2 (from opponents attacking you)" << endl;
 
-	char armour;
-	cout << "Choose: ";
-	cin >> armour;
+	char armour = 'G';
+	while(armour != 'L' && armour != 'C' && armour != 'P' && armour != 'N'){
+		cout << "Choose: ";
+		cin >> armour;
+	}
 
 	Armour *newArmour;
 
@@ -253,10 +266,11 @@ void Player::ChooseWeapon() {
 	cout << "Speed:\t6\t5\t4" << endl;
 	cout << "Strength:\t2\t4\t6" << endl << endl;
 
-	char weapons;
-	cout << "Choose your tool of death! ";
-	cin >> weapons;
-
+	char weapons = 'G';
+	while(weapons != 'R' && weapons != 'B' && weapons != 'A') {
+		cout << "Choose your tool of death! ";
+		cin >> weapons;
+	}
 	Weapon *weapon;
 
 	switch(weapons) {
@@ -351,7 +365,7 @@ void Player::ChooseItems() {
 
 	void Player::Dead() {
 		if(Alive) {
-			cout << this->GetName() << " has run out of health and died a cowardly death. Begone to the underworld, vile one!" << endl;
+			gui->printLog(this->GetName() + " has run out of health and died a cowardly death. Begone to the underworld, vile one!");
 			Alive = false;
 		}
 	}

@@ -3,9 +3,12 @@
 
 #include "../../Header/Player.h"
 #include "../../Header/Item.h"
+#include "../../Header/Gui.h"
 #include "../../Header/Items/PornMag.h"
 
 using namespace std;
+
+extern Gui *gui;
 
 PornMag::PornMag() : Item("PornMag") {
 	this->Location = NULL;
@@ -41,6 +44,6 @@ bool PornMag::isDropped() {
 void PornMag::Use(Player *player) {
 	this->SetLocation(player->GetLocation());
 	this->Dropped = true;
-	cout << player->GetName() << " dropped a porn magazine at (" << player->GetLocation()->GetX() <<", "<< player->GetLocation()->GetY() << "). Watch out!" << endl;
+	gui->printLog(player->GetName() + " dropped a porn magazine. Watch out!");
 }
 
