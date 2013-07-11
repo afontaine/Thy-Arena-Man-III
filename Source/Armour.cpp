@@ -1,6 +1,6 @@
 #include <string>
 
-#include "..\Header\Armour.h"
+#include "../Header/Armour.h"
 
 using namespace std;
 

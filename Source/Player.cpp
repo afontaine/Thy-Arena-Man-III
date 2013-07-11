@@ -1,17 +1,17 @@
 #include <iostream>
 #include <string>
 
-#include "..\Header\Player.h"
-#include "..\Header\Item.h"
-#include "..\Header\Weapon.h"
-#include "..\Header\Armour.h"
-#include "..\Header\Items\PornMag.h"
-#include "..\Header\Items\Bow.h"
-#include "..\Header\Items\Medkit.h"
-#include "..\Header\Items\Teleporter.h"
-#include "..\Header\Items\Steroids.h"
-#include "..\Header\Items\Carcass.h"
-#include "..\Header\Gui.h"
+#include "../Header/Player.h"
+#include "../Header/Item.h"
+#include "../Header/Weapon.h"
+#include "../Header/Armour.h"
+#include "../Header/Items/PornMag.h"
+#include "../Header/Items/Bow.h"
+#include "../Header/Items/Medkit.h"
+#include "../Header/Items/Teleporter.h"
+#include "../Header/Items/Steroids.h"
+#include "../Header/Items/Carcass.h"
+#include "../Header/Gui.h"
 
 using namespace std;
 

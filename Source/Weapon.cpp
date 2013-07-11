@@ -1,6 +1,6 @@
 #include <string>
 
-#include "..\Header\Weapon.h"
+#include "../Header/Weapon.h"
 
 using namespace std;
 

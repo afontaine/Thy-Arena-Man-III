@@ -1,6 +1,6 @@
-#include <curses.h>
+#include "../Header/curses.h"
 #include <string>
-#include "..\Header\Gui.h"
+#include "../Header/Gui.h"
 
 using namespace std;
 
