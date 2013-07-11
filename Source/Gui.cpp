@@ -15,12 +15,12 @@ Gui::Gui() {
 	cbreak();
 	leaveok(stdscr, TRUE);
 	
-	this->Arena = new Window(7, 13, 0, 0);
-	this->Compass = new Window(7, 13, 7, 0);
+	this->Arena = new Window(7, 14, 0, 0);
+	this->Compass = new Window(7, 14, 7, 0);
 	this->Menu = new Window(11, 80, 14, 0);
-	this->Status = new Window(7, 33, 7, 13);
+	this->Status = new Window(7, 32, 7, 14);
 	this->Inventory = new Window(7, 34, 7, 46);
-	this->Log = new Window(7, 67, 0, 13);
+	this->Log = new Window(7, 66, 0, 14);
 
 	refresh();
 	
