@@ -4,9 +4,9 @@
 #include <vector>
 #include <iterator>
 
-#include "..\Header\Player.h"
-#include "..\Header\Game.h"
-#include "..\Header\Gui.h"
+#include "../Header/Player.h"
+#include "../Header/Game.h"
+#include "../Header/Gui.h"
 
 using namespace std;
 // TODO: Implement constructor/destructor (start game/finish game)
@@ -42,7 +42,6 @@ Player *Game::GetPlayer(string name) {
 void Game::SetPlayer(int i, Player *p) {
 	vector<Player *>::iterator it;
 	it = this->players.begin(); advance(it, i);
-	insert_iterator<vector<Player *>> insert_it(this->players, it);
 	this->players.insert(it, p);
 }
 

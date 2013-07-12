@@ -1,7 +1,7 @@
 #include <string>
-#include "../../Header/Player.h"
-#include "../../Header/Item.h"
-#include "../../Header/Items/Medkit.h"
+#include "../Header/Player.h"
+#include "../Header/Item.h"
+#include "../Header/Medkit.h"
 
 using namespace std;
 

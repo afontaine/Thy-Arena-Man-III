@@ -1,9 +1,9 @@
-#include <curses.h>
+#include "../Header/curses.h"
 #include <string>
 #include <vector>
-#include "..\Header\Gui.h"
-#include "..\Header\Player.h"
-#include "..\Header\Item.h"
+#include "../Header/Gui.h"
+#include "../Header/Player.h"
+#include "../Header/Item.h"
 
 using namespace std;
 

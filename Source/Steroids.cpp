@@ -2,10 +2,10 @@
 #include <iostream>
 #include <cstdlib>
 
-#include "../../Header/Item.h"
-#include "../../Header/Player.h"
-#include "../../Header/Items/Steroids.h"
-#include "../../Header/Gui.h"
+#include "../Header/Item.h"
+#include "../Header/Player.h"
+#include "../Header/Steroids.h"
+#include "../Header/Gui.h"
 
 using namespace std;
 
