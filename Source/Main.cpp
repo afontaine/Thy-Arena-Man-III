@@ -21,5 +21,6 @@ int main() {
 	gui->printLog("Jacob just layed a porn mag! Watch out!");
 	gui->printMenu("What do you want to do? Well... what's it going to be, punk?");
 	gui->getMenu();
+	delete gui;
 	return 0;
 }

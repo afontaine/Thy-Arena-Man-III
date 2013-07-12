@@ -55,6 +55,17 @@ Gui::Gui() {
 	
 }
 
+Gui::~Gui() {
+	delete this->Log;
+	delete this->Status;
+	delete this->Inventory;
+	delete this->Arena;
+	delete this->Compass;
+	delete this->Menu;
+
+	endwin();
+}
+
 void Gui::drawCompass() {
 	WINDOW *compass = this->Compass->getWindow();
 	mvwaddch(compass, 1, 6,'8');
