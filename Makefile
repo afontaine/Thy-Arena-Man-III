@@ -2,18 +2,18 @@ CC=g++
 CFLAGS=-c -Wall
 LDFLAGS=-lm -lncurses
 HEADERDIR=Header/
-HEADER=$(HEADERDIR)$(wildcard, *.h)
+HEADER=$(wildcard $(HEADERDIR)*.h)
 SOURCEDIR=Source/
-SOURCE=$(SOUCEDIR)$(wildcard, *.cpp)
+SOURCE=$(wildcard $(SOURCEDIR)*.cpp)
 OBJDIR=Object/
-OBJS=$(addprefix $(OBJDIR)/,$(notdir $($SOURCE:.cpp=.o)))
-EXECUTABLE=They-Arena-Man-III
+OBJS=$(addprefix $(OBJDIR)/, $(notdir $(SOURCE:.cpp=.o)))
+EXECUTABLE=Thy-Arena-Man-III
 
 $(EXECUTABLE): $(OBJS)
-	$(CC) -Wall $(LDFLAGS) -o $@ $^
+	$(CC) -Wall $(LDFLAGS) $^ -o $@
 	
-$(OBJDIR)/%.o: $(SOURCEDIR)/%.cpp $(HEADERDIR)/%.h | $(OBJDIR)
-	$(CC) $(CFLAGS) -o *@ $<
+$(OBJDIR)/%.o: $(SOURCEDIR)/%.cpp | $(OBJDIR)
+	$(CC) $(CFLAGS) $< -o $@
 
 $(OBJDIR):
 	mkdir $(OBJDIR)
@@ -22,3 +22,6 @@ $(OBJDIR):
 
 clean:
 	rm -r $(OBJDIR) $(EXECUTABLE)
+
+list:
+	echo $(OBJS)

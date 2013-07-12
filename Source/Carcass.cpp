@@ -1,8 +1,8 @@
 #include <string>
 
-#include "../../Header/Item.h"
-#include "../../Header/Player.h"
-#include "../../Header/Items/Carcass.h"
+#include "../Header/Item.h"
+#include "../Header/Player.h"
+#include "../Header/Carcass.h"
 
 using namespace std;
 

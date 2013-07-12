@@ -1,10 +1,10 @@
 #include <string>
 #include <iostream>
 
-#include "../../Header/Player.h"
-#include "../../Header/Item.h"
-#include "../../Header/Gui.h"
-#include "../../Header/Items/PornMag.h"
+#include "../Header/Player.h"
+#include "../Header/Item.h"
+#include "../Header/Gui.h"
+#include "../Header/PornMag.h"
 
 using namespace std;
 

@@ -1,11 +1,12 @@
 #include <string>
 #include <cstdlib>
 #include <iostream>
+#include <cmath>
 
-#include "../../Header/Player.h"
-#include "../../Header/Item.h"
-#include "../../Header/Items/Bow.h"
-#include "..\..\Header\Gui.h"
+#include "../Header/Player.h"
+#include "../Header/Item.h"
+#include "../Header/Bow.h"
+#include "../Header/Gui.h"
 
 using namespace std;
 

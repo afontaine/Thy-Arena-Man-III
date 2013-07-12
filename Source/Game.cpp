@@ -42,7 +42,6 @@ Player *Game::GetPlayer(string name) {
 void Game::SetPlayer(int i, Player *p) {
 	vector<Player *>::iterator it;
 	it = this->players.begin(); advance(it, i);
-	insert_iterator<vector<Player *>> insert_it(this->players, it);
 	this->players.insert(it, p);
 }
 
