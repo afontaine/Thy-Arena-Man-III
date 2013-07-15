@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <math.h>
 
 #include "../Header/Player.h"
 #include "../Header/Item.h"
@@ -374,7 +375,29 @@ void Player::ChooseItems() {
 		return Alive;
 	}
 
-	void Player::RandomItems() {}; //TODO Implement
+	void Player::RandomItems() {
+
+		int item;
+
+		for(int i = 0; i < 3; i++) {
+			item = rand() % 6;
+			switch (item) {
+			case 0:
+				this->Equip.push_back(new Bow);
+			case 1:
+				this->Equip.push_back(new Carcass);
+			case 2:
+				this->Equip.push_back(new Medkit);
+			case 3:
+				this->Equip.push_back(new PornMag);
+			case 4:
+				this->Equip.push_back(new Steroids);
+			case 5:
+				this->Equip.push_back(new Teleporter);
+			}
+		}
+
+	}
 
 	bool Player::isAwesome() {
 		return this->Roids;
