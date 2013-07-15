@@ -1,6 +1,7 @@
 #include "../Header/curses.h"
 #include <string>
 #include "../Header/Gui.h"
+#include "../Header/Window.h"
 
 using namespace std;
 
