@@ -4,7 +4,7 @@
 
 ##TODO - In no particular order
 - Implement running of the game
-- Finish character creation, specifically `Player::Randomize()` and `Player::RandomItems()`
+- ~~Finish character creation, specifically `Player::Randomize()` and `Player::RandomItems()`~~
 - Implement AI
 - Implement Network-based mulitplayer with an as-of-yet undecided library
 - Create GitHub Pages for project

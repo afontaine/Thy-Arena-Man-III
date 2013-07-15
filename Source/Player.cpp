@@ -25,8 +25,8 @@ Player::Player(string name) {
 	
 	this->ChooseAi();
 	
-	if(this->Ai == 1) {
-		this->Randomize();
+	if(this->Ai == AI) {
+		this->SetLocation(1, 1);
 		return;
 	}
 
@@ -174,7 +174,53 @@ void Player::SetLocation(int x, int y) {
 	return;
 }
 
-void Player::Randomize(){}
+void Player::Randomize() {
+	int random = rand() % 3;
+	
+	switch (random) {
+	case 0:
+		this->SetClass('R');
+		break;
+	case 1:
+		this->SetClass('S');
+		break;
+	case 2:
+		this->SetClass('B');
+		break;
+	}
+
+	random = rand() % 3;
+
+	switch (random) {
+	case 0:
+		this->SetAttacker(new Weapon("Rapier", 6, 2));
+		break;
+	case 1:
+		this->SetAttacker(new Weapon("Broadsword", 5, 4));
+		break;
+	case 2:
+		this->SetAttacker(new Weapon("BattleAxe", 4, 6));
+	}
+
+	random = rand() % 4;
+
+	switch (random) {
+	case 0:
+		this->SetDefender(new Armour("Leather", 1, 0));
+		break;
+	case 1:
+		this->SetDefender(new Armour("Chainmail", 3, -1));
+		break;
+	case 2:
+		this->SetDefender(new Armour("Platemail", 5, -2));
+		break;
+	case 3:
+		this->SetDefender(new Armour("Naked", 0, 2));
+		break;
+	}
+
+	this->RandomItems();
+}
 
 void Player::ChooseClass() {
 	cout << this->Name << ", CHOOSE YOUR CLASS!" << endl;
@@ -234,24 +280,23 @@ void Player::ChooseArmour() {
 		cin >> armour;
 	}
 
-	Armour *newArmour;
 
 	switch(armour) {
 	case 'L':
-		newArmour = new Armour("Leather", 1, 0);
+		this->SetDefender(new Armour("Leather", 1, 0));
 		break;
 	case 'C':
-		newArmour = new Armour("Chainmail", 3, -1);
+		this->SetDefender(new Armour("Chainmail", 3, -1));
 		break;
 	case 'P':
-		newArmour = new Armour("Platemail", 5, -2);
+		this->SetDefender(new Armour("Platemail", 5, -2));
 		break;
 	case 'N':
-		newArmour = new Armour("Naked", 0, 2);
+		this->SetDefender(new Armour("Naked", 0, 2));
 		break;
 	}
 
-	this->SetDefender(newArmour);
+	
 
 	return;
 }
@@ -272,21 +317,18 @@ void Player::ChooseWeapon() {
 		cout << "Choose your tool of death! ";
 		cin >> weapons;
 	}
-	Weapon *weapon;
 
 	switch(weapons) {
 	case 'R':
-		weapon = new Weapon("Rapier", 6, 2);
+		this->SetAttacker(new Weapon("Rapier", 6, 2));
 		break;
 	case 'B':
-		weapon = new Weapon("Broadsword", 5, 4);
+		this->SetAttacker(new Weapon("Broadsword", 5, 4));
 		break;
 	case 'A':
-		weapon = new Weapon("BattleAxe", 4, 6);
+		this->SetAttacker(new Weapon("BattleAxe", 4, 6));
 		break;
 	}
-
-	this->SetAttacker(weapon);
 
 	return;
 }
@@ -384,16 +426,22 @@ void Player::ChooseItems() {
 			switch (item) {
 			case 0:
 				this->Equip.push_back(new Bow);
+				break;
 			case 1:
 				this->Equip.push_back(new Carcass);
+				break;
 			case 2:
 				this->Equip.push_back(new Medkit);
+				break;
 			case 3:
 				this->Equip.push_back(new PornMag);
+				break;
 			case 4:
 				this->Equip.push_back(new Steroids);
+				break;
 			case 5:
 				this->Equip.push_back(new Teleporter);
+				break;
 			}
 		}
 
