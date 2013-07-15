@@ -12,7 +12,7 @@ EXECUTABLE=Thy-Arena-Man-III
 $(EXECUTABLE): $(OBJS)
 	$(CC) -Wall $(LDFLAGS) $^ -o $@
 	
-$(OBJDIR)/%.o: $(SOURCEDIR)/%.cpp | $(OBJDIR)
+$(OBJDIR)/%.o: $(SOURCEDIR)/%.cpp $(HEADERDIR)/%.h | $(OBJDIR)
 	$(CC) $(CFLAGS) $< -o $@
 
 $(OBJDIR):
