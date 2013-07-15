@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <math.h>
+#include <cstdlib>
 
 #include "../Header/Player.h"
 #include "../Header/Item.h"
