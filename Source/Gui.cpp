@@ -67,6 +67,10 @@ Gui::~Gui() {
 	endwin();
 }
 
+Window Gui::getArena() {
+	return this->Arena;
+}
+
 void Gui::drawCompass() {
 	WINDOW *compass = this->Compass->getWindow();
 	mvwaddch(compass, 1, 6,'8');
@@ -186,9 +190,21 @@ void Gui::updateInventory(Player *player) {
 	box(inv, 0, 0);
 
 	mvwprintw(inv, 1, 1, "Items");
-
-	for(unsigned int i = 0; i < player->GetEquip().size(); i++)
-		mvwprintw(inv, i+2, 1, "\t%s", player->GetEquip().at(i)->GetName().c_str());
+	int control;
+	for(unsigned int i = 0; i < player->GetEquip().size(); i++) {
+		switch (i) {
+		case 0:
+			control = 1;
+			break;
+		case 1:
+			control = 3;
+			break;
+		case 2:
+			control = 7;
+			break;
+		}
+		mvwprintw(inv, i+2, 1, "\t%i - %s", control, player->GetEquip().at(i)->GetName().c_str());
+	}
 	wrefresh(inv);
 }
 

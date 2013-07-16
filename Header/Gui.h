@@ -22,6 +22,8 @@ public:
 	Gui();
 	~Gui();
 
+	Window getArena();
+
 	void printMenu(const std::string message);
 
 	void updateArena(std::vector<Player *> players);

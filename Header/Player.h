@@ -101,6 +101,8 @@ public:
 	void Dead();
 
 	bool isAlive();
+
+	void TakeTurn();
 };
 
 #endif

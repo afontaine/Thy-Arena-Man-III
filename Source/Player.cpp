@@ -13,6 +13,7 @@
 #include "../Header/Steroids.h"
 #include "../Header/Carcass.h"
 #include "../Header/Gui.h"
+#include "../Header/Window.h"
 
 using namespace std;
 
@@ -462,4 +463,44 @@ void Player::ChooseItems() {
 
 	vector<Item *> Player::GetEquip() {
 		return this->Equip;
+	}
+
+	void Player::TakeTurn() {
+		gui->printMenu("So, " + this->GetName() + ", what shall it be?");
+		char action = gui->getMenu;
+		switch (action) {
+		case '1':
+			if (this->GetEquip().size() > 0) {
+				this->GetEquip().at(0)->Use(this);
+			}
+			break;
+		case '3':
+			if (this->GetEquip().size() > 1) {
+				this->GetEquip().at(0)->Use(this);
+			}
+			break;
+		case '7':
+			if (this->GetEquip().size() > 2) {
+				this->GetEquip().at(0)->Use(this);
+			}
+			break;
+		case '2':
+			if (this->GetLocation()->GetY() < gui->getArena().getHeight())
+				this->MoveDown();
+			break;
+		case '4':
+			if (this->GetLocation()->GetX() > 1)
+				this->MoveLeft();
+			break;
+		case '6':
+			if (this->GetLocation->GetX() < gui->getArena().getWidth())
+				this->MoveRight();
+			break;
+		case '8':
+			if (this->GetLocation()->GetY() > 1)
+				this->MoveUp();
+			break;
+		case '5':
+			break;
+		}
 	}
