@@ -47,7 +47,7 @@ private:
 	std::vector<Item *> Equip;		// Vector(s are cool) of items the player is holding
 
 public:
-	Player(std::string name);
+	Player(std::string name, int pos);
 	~Player();
 
 	std::string GetName();

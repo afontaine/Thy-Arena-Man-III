@@ -20,14 +20,27 @@ using namespace std;
 
 extern Gui * gui;
 
-Player::Player(string name) {
+Player::Player(string name, int pos) {
 
 	this->SetName(name);
 	
 	this->ChooseAi();
+
+	switch (pos) {
+	case 0:
+		this->SetLocation(1, 1);
+		break;
+	case 1:
+		this->SetLocation(1, 12);
+		break;
+	case 2:
+		this->SetLocation(5, 12);
+		break;
+	case 3:
+		this->SetLocation(5, 1);
+	}
 	
 	if(this->Ai == AI) {
-		this->SetLocation(1, 1);
 		return;
 	}
 
@@ -38,8 +51,6 @@ Player::Player(string name) {
 	this->ChooseWeapon();
 	
 	this->ChooseItems();
-
-	this->SetLocation(1, 1);
 
 }
 
@@ -467,7 +478,7 @@ void Player::ChooseItems() {
 
 	void Player::TakeTurn() {
 		gui->printMenu("So, " + this->GetName() + ", what shall it be?");
-		char action = gui->getMenu;
+		char action = gui->getMenu();
 		switch (action) {
 		case '1':
 			if (this->GetEquip().size() > 0) {
@@ -485,7 +496,7 @@ void Player::ChooseItems() {
 			}
 			break;
 		case '2':
-			if (this->GetLocation()->GetY() < gui->getArena().getHeight())
+			if (this->GetLocation()->GetY() < gui->getArena()->getHeight())
 				this->MoveDown();
 			break;
 		case '4':
@@ -493,7 +504,7 @@ void Player::ChooseItems() {
 				this->MoveLeft();
 			break;
 		case '6':
-			if (this->GetLocation->GetX() < gui->getArena().getWidth())
+			if (this->GetLocation()->GetX() < gui->getArena()->getWidth())
 				this->MoveRight();
 			break;
 		case '8':

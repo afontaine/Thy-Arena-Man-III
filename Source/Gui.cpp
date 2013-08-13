@@ -67,7 +67,7 @@ Gui::~Gui() {
 	endwin();
 }
 
-Window Gui::getArena() {
+Window *Gui::getArena() {
 	return this->Arena;
 }
 

@@ -22,7 +22,7 @@ public:
 	Gui();
 	~Gui();
 
-	Window getArena();
+	Window *getArena();
 
 	void printMenu(const std::string message);
 

@@ -10,7 +10,35 @@
 
 using namespace std;
 // TODO: Implement constructor/destructor (start game/finish game)
-Game::Game() {}
+Game::Game() {
+	int numOfPlayers = 0;
+	
+	cout << "Enter the number of RANDOM_NOUN to enter thy RANDOM_MATCHING_ADJECTIVE ARENA!" << endl;
+	cout << "For legal reasons, this number must be between 2 and 4" << endl;
+	cin >> numOfPlayers;
+	while (numOfPlayers < 2 || numOfPlayers > 4) {
+		cout << "ATTEMPT AGAIN! ";
+		cin >> numOfPlayers;
+	}
+
+	string name;
+
+	for(int i = 0; i < numOfPlayers; i++) {
+		cout << "RANDOM_NOUN " << i + 1 <<", please add your name to the Scroll of the Damned!" << endl;
+		cin >> name;
+
+		while(name.length() < 1) {
+			cout << "THAT'S NOT A NAME!" << endl;
+			cin >> name;
+		}
+		players.push_back(new Player(name, i));
+		name = "";
+	}
+
+	cout << "All players are ready! Enter THY ARENA MAN III!" << endl;
+	cin >> name;
+
+}
 
 Game::~Game() {}
 
