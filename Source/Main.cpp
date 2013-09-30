@@ -26,7 +26,7 @@ int main() {
 	return 0;
 }
 
-int realMain() {
+void realMain() {
 	int play;
 	cout << "Welcome, peasants and kings, to THY ARENA MAN III!" << endl;
 	cout << "Enter thy glorious arena, and pit thee against thine foes!" << endl;
@@ -35,7 +35,7 @@ int realMain() {
 	if (play != 1) {
 		cout << "Coward!" << endl;
 		cin >> play;
-		exit 0;
+		exit(0);
 	}
 	cout << "Thout shall not regret thine choice!" << endl;
 	Game *thyArnea = new Game();

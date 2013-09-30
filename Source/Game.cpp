@@ -9,7 +9,9 @@
 #include "../Header/Gui.h"
 
 using namespace std;
-// TODO: Implement constructor/destructor (start game/finish game)
+
+extern  Gui* gui;
+
 Game::Game() {
 	int numOfPlayers = 0;
 	
@@ -37,6 +39,8 @@ Game::Game() {
 
 	cout << "All players are ready! Enter THY ARENA MAN III!" << endl;
 	cin >> name;
+
+	gui = new Gui();
 
 }
 
