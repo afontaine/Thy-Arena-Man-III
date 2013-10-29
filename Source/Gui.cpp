@@ -165,6 +165,8 @@ void Gui::updateArena(std::vector<Player *> players) {
 
 }
 
+
+//TODO: Create line length macro
 void Gui::printLog(const string message) {
 	WINDOW *log = this->Log->getWindow();
 	unsigned int charac = 0;
@@ -175,7 +177,8 @@ void Gui::printLog(const string message) {
 		wclrtoeol(log);
 		box(log, 0, 0);
 		if(charac + length < message.length())
-				while(message.at(charac + length) != ' ' && length >=0) {length--;}
+				while(message
+					.at(charac + length) != ' ' && length >=0) {length--;}
 		mvwprintw(log, 5, 1, message.substr(charac, length).c_str());
 		charac += length + 1;
 		length = 65;
