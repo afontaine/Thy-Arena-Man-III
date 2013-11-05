@@ -1,4 +1,4 @@
-#include "curses.h"
+#include "../Header/curses.h"
 
 class Window {
 private:

@@ -3,7 +3,7 @@
 
 #include <string>
 #include <vector>
-#include <curses.h>
+#include "../Header/curses.h"
 
 class Player;
 class Window;
