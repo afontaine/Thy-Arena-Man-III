@@ -4,6 +4,8 @@ compiler:
   - gcc
   - clang
 
-install: sudo apt-get install ncurses-dev
+install:
+  - apt-get install ia32-libs
+  - sudo apt-get install ncurses-dev
 
 script: make
