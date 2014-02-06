@@ -5,7 +5,6 @@ compiler:
   - clang
 
 install:
-  - sudo apt-get install ia32-libs
-  - sudo apt-get install ncurses-dev
+  - sudo apt-get install --force-yes -qq ia32-libs ia32-libs-multiarch ncurses-dev
 
 script: make
