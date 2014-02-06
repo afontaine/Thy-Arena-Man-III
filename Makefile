@@ -1,4 +1,4 @@
-CFLAGS=-c -Wall
+CFLAGS=-c -Wall -m32
 LDFLAGS=-lm -lncurses
 HEADERDIR=Header/
 HEADER=$(wildcard $(HEADERDIR)*.h)
@@ -9,7 +9,7 @@ OBJS=$(addprefix $(OBJDIR)/, $(notdir $(SOURCE:.cpp=.o)))
 EXECUTABLE=Thy-Arena-Man-III
 
 $(EXECUTABLE): $(OBJS)
-	$(CXX) -Wall $(LDFLAGS) $^ -o $@
+	$(CXX) -m32 $(LDFLAGS) $^ -o $@
 	
 $(OBJDIR)/%.o: $(SOURCEDIR)/%.cpp $(HEADERDIR)/%.h | $(OBJDIR)
 	$(CXX) $(CFLAGS) $< -o $@
