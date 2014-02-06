@@ -1,6 +1,6 @@
 #include <vector>
 #include <iostream>
-#include <stdlib.h>
+#include <cstdlib>
 
 #include "../Header/Main.h"
 
