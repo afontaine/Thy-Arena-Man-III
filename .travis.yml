@@ -4,4 +4,6 @@ compiler:
   - gcc
   - clang
 
+install: sudo apt-get install ncurses-dev
+
 script: make
