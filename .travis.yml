@@ -6,7 +6,7 @@ compiler:
 
 install:
   - sudo apt-get update
-  - apt-mark showhold
+  - dpkg --get-selections | grep hold
   - sudo apt-get install -qq ia32-libs ia32-libs-multiarch
   - sudo apt-get install ncurses-dev
 
