@@ -1,4 +1,4 @@
-CFLAGS=-c -Wall -m32
+CFLAGS=-c -Wall
 LDFLAGS=-lm -lncurses
 HEADERDIR=Header/
 HEADER=$(wildcard $(HEADERDIR)*.h)
