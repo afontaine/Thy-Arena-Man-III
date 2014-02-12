@@ -9,7 +9,7 @@ OBJS=$(addprefix $(OBJDIR)/, $(notdir $(SOURCE:.cpp=.o)))
 EXECUTABLE=Thy-Arena-Man-III
 
 $(EXECUTABLE): $(OBJS)
-	$(CXX) -m32 $(LDFLAGS) $^ -o $@
+	$(CXX) $(LDFLAGS) $^ -o $@
 	
 $(OBJDIR)/%.o: $(SOURCEDIR)/%.cpp $(HEADERDIR)/%.h | $(OBJDIR)
 	$(CXX) $(CFLAGS) $< -o $@
