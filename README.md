@@ -1,8 +1,9 @@
-#THY ARENA MAN III
+# THY ARENA MAN III
+[![Build Status](https://travis-ci.org/afontaine/Thy-Arena-Man-III.png?branch=master)](https://travis-ci.org/afontaine/Thy-Arena-Man-III)
 
 	A glorious combat arena game designed to prove who is mightiest.
 
-##TODO - In no particular order
+## TODO - In no particular order
 - Implement running of the game
 - ~~Finish character creation, specifically `Player::Randomize()` and `Player::RandomItems()`~~
 - Implement AI
@@ -11,12 +12,12 @@
 
 ... and that's all I can think of for now.
 
-##To Compile
-###LINUX:
+## To Compile
+### LINUX:
 1. Clone
 2. make (using GNUmake, if anyone else wants to try a different make, let me know the results!)
 
-###WINDOWS:
+### WINDOWS:
 1. Clone
 2. make (GNUmake port, untested), or put in VC++/Code::Blocks/eclipse/what-have-you and build it that way
 
